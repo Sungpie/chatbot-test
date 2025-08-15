@@ -1,0 +1,14 @@
+[
+    {
+        "role": "system",
+        "content": "당신은 친절하고 유용한 AI 챗봇입니다."
+    },
+    {
+        "role": "user",
+        "content": "안녕"
+    },
+    {
+        "role": "assistant",
+        "content": "안녕하세요! 오늘은 어떠신가요? 도움이 필요하거나 대화하고 싶으신가요?"
+    }
+]
