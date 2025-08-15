@@ -1,8 +1,13 @@
 import os
+import sys
+from dotenv import load_dotenv  # 추가: dotenv import
 import google.generativeai as genai
 from typing import List, Dict
 import json
 from datetime import datetime
+
+# .env 파일 로드 (중요!)
+load_dotenv()
 
 class GeminiChatbot:
     """Google Gemini API를 사용한 간단한 챗봇 클래스"""
@@ -13,7 +18,7 @@ class GeminiChatbot:
         
         Args:
             api_key: Google AI Studio에서 발급받은 API 키
-            model_name: 사용할 Gemini 모델 이름 (기본값: gemini-pro)
+            model_name: 사용할 Gemini 모델 이름
         """
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel(model_name)
@@ -98,18 +103,24 @@ class GeminiChatbot:
 def main():
     """메인 실행 함수"""
     
-    # API 키 설정 (환경 변수에서 가져오기)
-    # API_KEY = os.getenv("GEMINI_API_KEY")
-    API_KEY = os.getenv("GEMINI_API_KEY")  # 여기에 실제 API 키를 입력하세요
+    # 환경 변수에서 API 키 가져오기
+    API_KEY = os.getenv("GEMINI_API_KEY")
     
-    if API_KEY == "YOUR_API_KEY_HERE":
+    # API 키 확인
+    if not API_KEY or API_KEY == "your-api-key-here":
         print("⚠️  API 키를 설정해주세요!")
-        print("Google AI Studio에서 API 키를 발급받으세요:")
-        print("https://makersuite.google.com/app/apikey")
+        print("\n설정 방법:")
+        print("1. .env 파일을 열어서 GEMINI_API_KEY에 실제 API 키를 입력하세요")
+        print("2. API 키는 Google AI Studio에서 발급받을 수 있습니다:")
+        print("   https://makersuite.google.com/app/apikey")
         return
     
     # 챗봇 인스턴스 생성
-    chatbot = GeminiChatbot(api_key=API_KEY)
+    try:
+        chatbot = GeminiChatbot(api_key=API_KEY, model_name="gemini-2.0-flash-lite")
+    except Exception as e:
+        print(f"❌ 챗봇 초기화 실패: {str(e)}")
+        return
     
     # 채팅 시작
     chatbot.start_chat()
