@@ -100,7 +100,7 @@ def main():
     
     # API 키 설정 (환경 변수에서 가져오기)
     # API_KEY = os.getenv("GEMINI_API_KEY")
-    API_KEY = API_KEY  # 여기에 실제 API 키를 입력하세요
+    API_KEY = os.getenv("GEMINI_API_KEY")  # 여기에 실제 API 키를 입력하세요
     
     if API_KEY == "YOUR_API_KEY_HERE":
         print("⚠️  API 키를 설정해주세요!")
