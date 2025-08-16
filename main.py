@@ -112,19 +112,17 @@ class PlaceRecommendationBot:
     def recommend_places(self, user_query: str) -> Dict:
         """
         사용자 쿼리를 받아 장소 추천
-        
-        Args:
-            user_query: 사용자의 장소 추천 요청
-            
-        Returns:
-            JSON 형식의 추천 결과
         """
         if self.chat is None:
             self.start_chat()
         
         try:
             # Gemini에게 요청
+            print(f"🤖 Gemini에게 보내는 최종 질문: {user_query}") # 로그 추가 1
             response = self.chat.send_message(user_query)
+            
+            # Gemini의 실제 응답을 그대로 출력해보기 (가장 중요!)
+            print(f"📄 Gemini의 실제 응답 (raw): {response.text}") # 로그 추가 2
             
             # JSON 파싱 시도
             try:

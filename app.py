@@ -24,6 +24,10 @@ bot = PlaceRecommendationBot(api_key=gemini_api_key, kakao_api_key=kakao_api_key
 def recommend():
     # 1. 백엔드로부터 정해진 형식의 JSON 데이터를 받습니다.
     backend_request_data = request.get_json()
+    
+    # 백엔드가 보낸 데이터를 그대로 출력해보기
+    print(f"📥 백엔드로부터 받은 요청 데이터: {backend_request_data}") # 로그 추가
+
 
     # 필수 값들이 있는지 확인합니다.
     if not all(key in backend_request_data for key in ["place", "mood", "purpose"]):
