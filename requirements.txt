@@ -1,0 +1,5 @@
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+typing-extensions>=4.0.0
+Flask # 웹 서버를 위한 플라스크
+gunicorn # 배포 환경에서 파이썬 코드를 실행시켜 줄 서버 프로그램
