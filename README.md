@@ -8,7 +8,6 @@ Google Gemini API를 사용한 Python 챗봇입니다.
 
 ```bash
 git clone https://github.com/yourusername/gemini-chatbot.git
-cd gemini-chatbot
 ```
 
 2. 가상환경 생성 및 활성화
